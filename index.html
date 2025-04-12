@@ -24,6 +24,22 @@
         img {
             margin-top: 5px;
         }
+
+        .rockcontainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rockrow {
+            width: 1000px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         @keyframes rotation {
             from {
                 transform: rotate(0deg);
@@ -37,9 +53,16 @@
   <body>
     <main>
         <h1>interesting.rocks</h1>
-        <img src="rock1.png" alt="rock" class="rotate">
-        <img src="rock2.png" alt="rock" class="rotate">
-        <img src="rock3.png" alt="rock" class="rotate">
+        <div class="rockcontainer">
+            <div class="rockrow">
+                <img src="rock1.png" alt="rock" class="rotate">
+                <img src="rock2.png" alt="rock" class="rotate">
+            </div>
+            <div class="rockrow">
+                <img src="rock3.png" alt="rock" class="rotate">
+                <img src="rock4.png" alt="rock" class="rotate">
+            </div>
+        </div>
     </main>
   </body>
 </html>
