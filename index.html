@@ -73,17 +73,46 @@
     </main>
     <script>
         let x = 10;
+        let y = 0;
+        let z = 1;
+        let colours = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink'];
         let boop;
+        let boopBg;
+
+        function h1Boop() {
+            if (z >= colours.length) {
+                z = 0;
+            }
+
+            $('h1').css('color', colours[z]);
+            z++;
+        }
+
+        function bgBoop() {
+            if (y >= colours.length) {
+                y = 0;
+            }
+
+            $('body').css('background-color', colours[y]);
+            y++;
+        }
 
         function setSpeed() {
             x = x/2;
             
-            if (x < 0.01) {
+            if (x < 0.1) {
                 clearInterval(boop);
                 $('.rockcontainer').css('animation', 'rotation 5s infinite linear');
                 $('.rotate').each(function(index , element) {
                     $(element).css('animation', 'rotation 5s infinite linear');
                 });
+
+                setTimeout(function() {
+                    boopBg = setInterval(bgBoop, 500);
+                    setTimeout(function() {
+                        setInterval(h1Boop, 250);
+                    }, 2500);
+                }, 2000);
                 return
             }
 
@@ -93,7 +122,7 @@
         }
 
         $(function() {
-            boop = setInterval(setSpeed, 500);
+            boop = setInterval(setSpeed, 2000);
         });
     </script>
   </body>
