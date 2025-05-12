@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>interesting.rocks</title>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="jquery-3.7.1.slim.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -23,9 +24,9 @@
             margin: 0 0 50px 0;
         }
 
-        .rotate {
+        /* .rotate {
             animation: rotation 5s infinite linear;
-        }
+        } */
 
         img {
             margin-top: 5px;
@@ -61,8 +62,8 @@
         <h1>interesting.rocks</h1>
         <div class="rockcontainer">
             <div class="rockrow">
-                <img src="rock1.png" alt="rock" class="rotate">
-                <img src="rock2.png" alt="rock" class="rotate">
+                <img src="rock1.png" alt="rock" class="rotate" width="474" height="316">
+                <img src="rock2.png" alt="rock" class="rotate" width="474" height="369">
             </div>
             <div class="rockrow">
                 <img src="rock3.png" alt="rock" class="rotate">
@@ -70,5 +71,30 @@
             </div>
         </div>
     </main>
+    <script>
+        let x = 10;
+        let boop;
+
+        function setSpeed() {
+            x = x/2;
+            
+            if (x < 0.01) {
+                clearInterval(boop);
+                $('.rockcontainer').css('animation', 'rotation 5s infinite linear');
+                $('.rotate').each(function(index , element) {
+                    $(element).css('animation', 'rotation 5s infinite linear');
+                });
+                return
+            }
+
+            $('.rotate').each(function(index , element) {
+                $(element).css('animation', 'rotation ' + x + 's infinite linear');
+            });
+        }
+
+        $(function() {
+            boop = setInterval(setSpeed, 500);
+        });
+    </script>
   </body>
 </html>
