@@ -24,10 +24,6 @@
             margin: 0 0 50px 0;
         }
 
-        /* .rotate {
-            animation: rotation 5s infinite linear;
-        } */
-
         img {
             margin-top: 5px;
         }
@@ -62,20 +58,22 @@
         <h1>interesting.rocks</h1>
         <div class="rockcontainer">
             <div class="rockrow">
-                <img src="rock1.png" alt="rock" class="rotate" width="474" height="316">
-                <img src="rock2.png" alt="rock" class="rotate" width="474" height="369">
+                <img src="rock1.png" alt="rock" class="rotate zoomies" width="474" height="316">
+                <img src="rock2.png" alt="rock" class="rotate zoomies" width="474" height="369">
             </div>
             <div class="rockrow">
-                <img src="rock3.png" alt="rock" class="rotate">
-                <img src="rock4.png" alt="rock" class="rotate">
+                <img src="rock3.png" alt="rock" class="rotate zoomies" width="576" height="433">
+                <img src="rock4.png" alt="rock" class="rotate zoomies" width="577" height="433">
             </div>
         </div>
     </main>
     <script>
+        let w = 32;
         let x = 10;
         let y = 0;
         let z = 1;
-        let colours = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink'];
+        
+        let colours = ['grey', 'red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink'];
         let boop;
         let boopBg;
 
@@ -100,7 +98,7 @@
         function setSpeed() {
             x = x/2;
             
-            if (x < 0.1) {
+            if (x < 0.5) {
                 clearInterval(boop);
                 $('.rockcontainer').css('animation', 'rotation 5s infinite linear');
                 $('.rotate').each(function(index , element) {
@@ -123,6 +121,25 @@
 
         $(function() {
             boop = setInterval(setSpeed, 2000);
+            setTimeout(function() {
+                setInterval(function() {
+                    $('.rotate').each(function(index , element) {
+                        w = w+1;
+                        $('h1').css('font-size', w);
+                    });
+                }, 1000);
+            }, 1000);
+
+            setTimeout(function() {
+                setInterval(function() {
+                    $('.rotate').each(function(index , element) {
+                        $(element).width($(element).width() + 5);
+                        $(element).height($(element).height() + 5);
+                    });
+                }, 200);
+            }, 10000);
+
+            $('.body').css('background-color', 'grey');
         });
     </script>
   </body>
